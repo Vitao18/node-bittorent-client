@@ -1,0 +1,22 @@
+{
+  "name": "bittorent-client",
+  "version": "1.0.0",
+  "description": "A bittorrent client for educational purposes",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vitao18/node-bittorent-client.git"
+  },
+  "author": "Victor Feitosa <victoronline9@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Vitao18/node-bittorent-client/issues"
+  },
+  "homepage": "https://github.com/Vitao18/node-bittorent-client#readme",
+  "dependencies": {
+    "bencode": "^2.0.1"
+  }
+}
