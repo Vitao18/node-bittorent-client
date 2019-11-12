@@ -1,4 +1,5 @@
 const dgram = require("dgram");
+const crypto = require("crypto");
 const Buffer = require("buffer").Buffer;
 const urlParse = require("url").parse;
 
@@ -8,8 +9,23 @@ const udpSend = (socket, message, rawUrl, callback = () => {}) => {
 };
 
 const respType = resp => {};
-const buildConnReq = () => {};
-const parseConnResp = () => {};
+const buildConnReq = () => {
+  const buf = Buffer.alloc(16);
+  // connection id
+  buf.writeUInt32BE("0x417", 0);
+  buf.writeUInt32BE("0x27101980", 4);
+  // action
+  buf.writeUInt32BE(0, 8);
+  // transaction id
+  crypto.randomBytes(4).copy(buf, 12);
+
+  return buf;
+};
+const parseConnResp = resp => ({
+  action: resp.readUInt32BE(0),
+  action: resp.readUInt32BE(4),
+  action: resp.slice(8)
+});
 const buildAnnounceReq = () => {};
 const parseAnnounceResp = () => {};
 
